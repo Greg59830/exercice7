@@ -1,0 +1,22 @@
+<div class="row my-3">
+    <div class="col-12 col-md-8 offset-md-2 text-white bg-dark rounded p-3">
+        <h5 class="display-5 text-muted">Exercice Pipes</h5>
+        <hr>
+        <div class="my-2 alert border p-3" *ngFor="let server of servers | serverSort" [ngClass]="{ 'alert-success border-success': server.stability != 'offline', 'alert-warning border-warning': server.stability == 'offline'}">
+            <div class="row">
+                <div class="col-auto">
+                    <b>{{ server.name }}</b>
+                </div>
+                <div class="col-auto">
+                    {{ server.size | serverSize }}
+                </div>
+                <div class="col-auto me-auto">
+                    {{ server.startingDate | date: "dd/MM/yyyy" }}
+                </div>
+                <div class="col-auto">
+                    <span class="p-2 bg-dark text-white rounded"> {{ server.stability.toUpperCase() }} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
